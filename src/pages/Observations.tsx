@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { Box, Button, List, Typography } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
-import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
+import ConfirmDeleteDialog from "../components/DeleteDialog";
 import { Observation } from "../models/observation";
-import ObservationListItem from "../components/ObservationListItem";
+import ObservationListItem from "../components/ListItem";
 
 const Observations = () => {
   const [observations, setObservations] = useState(getAllObservations());

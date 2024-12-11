@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllObservations, saveObservations } from "../utils/localStorageManage";
-import ObservationForm from "../components/ObservationForm";
+import ObservationForm from "../components/Form";
 import { Box } from "@mui/material";
 
 const AddObservationPage = () => {

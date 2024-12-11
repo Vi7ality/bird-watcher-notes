@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getAllObservations, getObservation, saveObservations } from "../utils/localStorageManage";
 import { Observation } from "../models/observation";
 import { Box, Button, Typography } from "@mui/material";
-import ObservationForm from "../components/ObservationForm";
+import ObservationForm from "../components/Form";
 
 const EditObservation = () => {
   const navigate = useNavigate();
