@@ -1,17 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Observations from "./pages/Observations.tsx";
-// import AddObservation from "./pages/AddObservation";
-// import EditObservation from "./pages/EditObservation";
-// import ConfirmDelete from "./pages/ConfirmDelete";
+import AddObservationPage from "./pages/AddObservationPage.tsx";
+import EditObservation from "./pages/EditObservation.tsx";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Observations />} />
-        {/* <Route path="/add" element={<AddObservation />} />
+        <Route path="/add" element={<AddObservationPage />} />
         <Route path="/edit/:id" element={<EditObservation />} />
-        <Route path="/delete/:id" element={<ConfirmDelete />} /> */}
+        {/* <Route path="/delete/:id" element={<ConfirmDelete />} /> */}
       </Routes>
     </Router>
   );

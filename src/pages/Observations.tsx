@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getObservations } from "../utils/localStorageManage";
+import { getAllObservations } from "../utils/localStorageManage";
 import { Link } from "react-router-dom";
 
 const Observations = () => {
-  const [observations, setObservations] = useState(getObservations());
+  const [observations, setObservations] = useState(getAllObservations());
 
   useEffect(() => {
-    setObservations(getObservations());
+    setObservations(getAllObservations());
   }, []);
 
   return (
