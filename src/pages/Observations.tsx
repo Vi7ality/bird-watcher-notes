@@ -53,7 +53,7 @@ const Observations = () => {
 
       <List sx={{ width: "100%", maxWidth: "600px" }}>
         {observations.map((obs) => (
-          <ObservationListItem obs={obs} handleOpenModal={handleOpenModal} />
+          <ObservationListItem obs={obs} handleOpenModal={handleOpenModal} key={obs.id} />
         ))}
       </List>
       <Button
