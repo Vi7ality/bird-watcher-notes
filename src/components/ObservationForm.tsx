@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { Observation } from "../models/observation";
 import { ChangeEventHandler } from "react";
 
@@ -11,7 +11,20 @@ interface ObservationFormProps {
 
 const ObservationForm = ({ observation, handleChange, handleSave, mode }: ObservationFormProps) => {
   return (
-    <>
+    <Box
+      sx={{
+        maxWidth: 400,
+        margin: "0 auto",
+        padding: 3,
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        backgroundColor: "#f9f9f9",
+      }}
+    >
+      <Typography variant="h5" gutterBottom>
+        {mode === "save" ? "Add Observation" : "Edit Observation"}
+      </Typography>
+
       {mode === "save" && (
         <>
           <TextField
@@ -19,9 +32,24 @@ const ObservationForm = ({ observation, handleChange, handleSave, mode }: Observ
             name="location"
             value={observation.location}
             onChange={handleChange}
+            fullWidth
+            margin="normal"
           />
-          <TextField label="Bird" name="bird" value={observation.bird} onChange={handleChange} />
-          <Button variant="contained" color="primary" onClick={handleSave}>
+          <TextField
+            label="Bird"
+            name="bird"
+            value={observation.bird}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSave}
+            fullWidth
+            sx={{ marginTop: 2 }}
+          >
             Save
           </Button>
         </>
@@ -36,6 +64,8 @@ const ObservationForm = ({ observation, handleChange, handleSave, mode }: Observ
             value={observation.date}
             onChange={handleChange}
             InputLabelProps={{ shrink: true }}
+            fullWidth
+            margin="normal"
           />
           <TextField
             label="Time"
@@ -44,20 +74,37 @@ const ObservationForm = ({ observation, handleChange, handleSave, mode }: Observ
             value={observation.time}
             onChange={handleChange}
             InputLabelProps={{ shrink: true }}
+            fullWidth
+            margin="normal"
           />
           <TextField
             label="Place"
             name="location"
             value={observation.location}
             onChange={handleChange}
+            fullWidth
+            margin="normal"
           />
-          <TextField label="Bird" name="bird" value={observation.bird} onChange={handleChange} />
-          <Button variant="contained" color="primary" onClick={handleSave}>
-            Edit observation
+          <TextField
+            label="Bird"
+            name="bird"
+            value={observation.bird}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSave}
+            fullWidth
+            sx={{ marginTop: 2 }}
+          >
+            Edit Observation
           </Button>
         </>
       )}
-    </>
+    </Box>
   );
 };
 

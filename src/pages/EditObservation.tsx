@@ -50,7 +50,6 @@ const EditObservation = () => {
             mt: 4,
           }}
         >
-          <h1>Edit observation</h1>
           <ObservationForm
             mode="edit"
             observation={observation}

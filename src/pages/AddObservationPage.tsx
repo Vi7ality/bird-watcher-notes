@@ -30,7 +30,6 @@ const AddObservationPage = () => {
 
   return (
     <div>
-      <h1>Add new observation</h1>
       <ObservationForm
         mode="save"
         observation={observation}
