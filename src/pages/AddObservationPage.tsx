@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllObservations, saveObservations } from "../utils/localStorageManage";
+import ObservationForm from "../components/ObservationForm";
 
 const AddObservationPage = () => {
   const navigate = useNavigate();
-  const [bird, setBird] = useState("");
-  const [location, setLocation] = useState("");
+  const [observation, setObservation] = useState({
+    location: "",
+    bird: "",
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setObservation((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = () => {
+  const handleSave = () => {
     const newObservation = {
       id: Date.now().toString(),
-      bird,
-      location,
+      bird: observation.bird,
+      location: observation.location,
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
     };
@@ -24,19 +31,12 @@ const AddObservationPage = () => {
   return (
     <div>
       <h1>Add new observation</h1>
-      <input
-        type="text"
-        placeholder="Птица"
-        value={bird}
-        onChange={(e) => setBird(e.target.value)}
+      <ObservationForm
+        mode="save"
+        observation={observation}
+        handleChange={handleChange}
+        handleSave={handleSave}
       />
-      <input
-        type="text"
-        placeholder="Место"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Add</button>
     </div>
   );
 };

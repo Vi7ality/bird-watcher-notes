@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllObservations, getObservation, saveObservations } from "../utils/localStorageManage";
 import { Observation } from "../models/observation";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import ObservationForm from "../components/ObservationForm";
 
 const EditObservation = () => {
   const navigate = useNavigate();
@@ -50,32 +51,12 @@ const EditObservation = () => {
           }}
         >
           <h1>Edit observation</h1>
-          <TextField
-            label="Observation date"
-            type="date"
-            name="date"
-            value={observation.date}
-            onChange={handleChange}
-            InputLabelProps={{ shrink: true }}
+          <ObservationForm
+            mode="edit"
+            observation={observation}
+            handleChange={handleChange}
+            handleSave={handleSave}
           />
-          <TextField
-            label="Time"
-            type="time"
-            name="time"
-            value={observation.time}
-            onChange={handleChange}
-            InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            label="Place"
-            name="location"
-            value={observation.location}
-            onChange={handleChange}
-          />
-          <TextField label="Bird" name="bird" value={observation.bird} onChange={handleChange} />
-          <Button variant="contained" color="primary" onClick={handleSave}>
-            Save
-          </Button>
         </Box>
       ) : (
         <Box display="flex" flexDirection="column" alignItems="center" mt={4}>
