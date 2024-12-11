@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllObservations, saveObservations } from "../utils/localStorageManage";
 import ObservationForm from "../components/ObservationForm";
+import { Box } from "@mui/material";
 
 const AddObservationPage = () => {
   const navigate = useNavigate();
@@ -29,14 +30,23 @@ const AddObservationPage = () => {
   };
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        maxWidth: 400,
+        margin: "auto",
+        mt: 4,
+      }}
+    >
       <ObservationForm
         mode="save"
         observation={observation}
         handleChange={handleChange}
         handleSave={handleSave}
       />
-    </div>
+    </Box>
   );
 };
 

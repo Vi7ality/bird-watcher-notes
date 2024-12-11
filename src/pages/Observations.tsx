@@ -41,14 +41,25 @@ const Observations = () => {
 
   useEffect(() => {
     setObservations(getAllObservations());
-  }, [observations]);
+  }, [selectedObservation]);
 
   return (
-    <Box sx={{ padding: 4 }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: 4,
+        margin: "0 auto",
+        textAlign: "center",
+      }}
+    >
       <Typography variant="h4" gutterBottom>
         Observation List
       </Typography>
-      <List>
+      {!observations.length && <Typography>No observations yet</Typography>}
+      <List sx={{ width: "100%", maxWidth: "600px" }}>
         {observations.map((obs) => (
           <ListItem
             key={obs.id}
