@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllObservations } from "../utils/localStorageManage";
+import { getAllObservations, saveObservations } from "../utils/localStorageManage";
 import { Link } from "react-router-dom";
 import {
   Box,
@@ -15,13 +15,33 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
+import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
+import { Observation } from "../models/observation";
 
 const Observations = () => {
   const [observations, setObservations] = useState(getAllObservations());
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedObservation, setSelectedObservation] = useState<Observation | null>(null);
+
+  const handleObsDelete = (id: string) => {
+    const savedObservations = getAllObservations();
+    const updatedObservations = savedObservations.filter((obs) => obs.id !== id);
+    saveObservations(updatedObservations);
+  };
+
+  const handleOpenModal = (observation: Observation) => {
+    setSelectedObservation(observation);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedObservation(null);
+  };
 
   useEffect(() => {
     setObservations(getAllObservations());
-  }, []);
+  }, [observations]);
 
   return (
     <Box sx={{ padding: 4 }}>
@@ -47,7 +67,7 @@ const Observations = () => {
               <IconButton component={Link} to={`/edit/${obs.id}`} aria-label="Edit observation">
                 <EditIcon color="primary" />
               </IconButton>
-              <IconButton component={Link} to={`/delete/${obs.id}`} aria-label="Delete observation">
+              <IconButton onClick={() => handleOpenModal(obs)} aria-label="Delete observation">
                 <DeleteIcon color="error" />
               </IconButton>
             </ListItemSecondaryAction>
@@ -64,6 +84,15 @@ const Observations = () => {
       >
         Add New Observation
       </Button>
+
+      {selectedObservation && (
+        <ConfirmDeleteDialog
+          open={modalOpen}
+          selectedObservation={selectedObservation}
+          handleCloseModal={handleCloseModal}
+          handleObsDelete={handleObsDelete}
+        />
+      )}
     </Box>
   );
 };

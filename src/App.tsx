@@ -10,7 +10,6 @@ function App() {
         <Route path="/" element={<Observations />} />
         <Route path="/add" element={<AddObservationPage />} />
         <Route path="/edit/:id" element={<EditObservation />} />
-        {/* <Route path="/delete/:id" element={<ConfirmDelete />} /> */}
       </Routes>
     </Router>
   );
