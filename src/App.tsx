@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Observations from "./pages/ObservationsList";
+import Observations from "./pages/Observations.tsx";
 // import AddObservation from "./pages/AddObservation";
 // import EditObservation from "./pages/EditObservation";
 // import ConfirmDelete from "./pages/ConfirmDelete";
